@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> universitas muhammadiyah di indonesia
+</title>
+  <!-- disini lokasi style atau script-->
+  <style>
+  	 #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+ </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  	<script> 
+  		function initMap() {
+  			var map = new google.maps.Map(  			
+  				document.getElementById('map'), 
+  				{
+          			zoom: 2,
+                center: {lat: -7.5571298, lng: 110.7713486}
+        		}
+        	);
+
+        //data untuk melabeli marker, 1 marker 1 lhuruf
+         var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+         //proses membuat markers diambil dari data locations + labels
+         var markers = locations.map(function(location, i) {
+          return new google.maps.Marker({
+            position: location,
+            label: labels[i % labels.length]
+          });
+        });
+
+         //meletakkan marker dalam peta menggunakan MarkerCluster
+          var markerCluster = new MarkerClusterer(map, markers,
+            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+      }
+
+
+      var locations = [
+        {lat: -7.557648, lng: 110.771906},
+        {lat: -7.810599, lng:  110.321702},		
+        {lat: -7.957629, lng: 112.614014},
+        {lat: -7.412228, lng: 109.271979},
+        {lat: -8.175174, lng: 113.717584},
+        {lat: -6.291551, lng: 106.776330},
+        {lat: -5.182560, lng: 119.441054},
+        {lat: 5.535506, lng: 95.332536},
+        {lat: -3.786234, lng: 102.263276},
+        {lat: -6.741824, lng: 108.493333},
+        {lat: 0.620469, lng: 123.015873},
+        {lat: -7.022337, lng: 110.461679}
+      ]
+
+
+  	</script>
+
+    <!-- Mengambil Librari MarkerCluster dari google   -->
+    <script src="markerclusterer.js"></script>    
+
+
+	<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZTmck7VZQYre5i5TnIA4yZna4V8UxChw&callback=initMap">
+    </script>
+
+</body>
+</html>
